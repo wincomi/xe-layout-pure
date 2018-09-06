@@ -1,0 +1,89 @@
+//
+// Bootstrap Options
+//
+
+$light: #f8f9fa;
+
+// Bootstrap Sass options
+$enable-rounded: true;
+$enable-shadows: true;
+$enable-gradients: false;
+
+// 
+$font-size-base: 0.875rem;
+$body-bg: $light;
+
+// Card
+$card-border-width: 0;
+
+// Pagination
+$pagination-border-width: 0;
+
+// List group
+$list-group-border-color: darken($light, 5%);
+
+// Type
+$hr-border-color: $list-group-border-color;
+
+// Transition
+// $ease-in-out-elastic: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+$transition-fade: opacity .15s ease;
+
+// Modal
+// $modal-transition: transform 0.3s $ease-in-out-elastic;
+$modal-backdrop-opacity: 0.35;
+$modal-content-border-color: transparent;
+
+$theme-colors: (
+	"twitter": #1da1f2,
+	"facebook": #3b5998,
+	"instagram": #dd2a7b,
+	"kakao": #ffea00, // #472d2d
+);
+
+// Import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Pagination
+.pagination {
+	margin-bottom: 0
+}
+
+.page-link {
+	@include border-radius($border-radius);
+}
+
+// Forms
+.col-form-label {
+	color: $text-muted;
+}
+
+// Custom Form
+.custom-select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+
+// Modal
+.modal-dialog-centered {
+	.modal.fade & {
+		transform: scale(0.75);
+	}
+
+	.modal.show & {
+		transform: scale(1.0);
+	}
+}
+
+// Transition
+$transition-color: color .15s ease-in-out;
+$transition-background-color: background-color .15s ease-in-out;
+
+.list-group-item-action {
+	@include transition($transition-background-color);
+}
+
+a {
+	@include transition($transition-color);
+}

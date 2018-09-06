@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="pure_old_browser_title">
+		<value xml:lang="ko"><![CDATA[브라우저를 업데이트해주세요.]]></value>
+	</item>
+	<item name="pure_old_browser_subtitle">
+		<value xml:lang="ko"><![CDATA[사용하고 계신 브라우저에서는 서비스 이용이 어렵습니다.<br />브라우저를 업데이트하거나, 모바일 기기로 보실 수 있습니다.]]></value>
+	</item>
+	<item name="pure_old_browser_qrcode_desc">
+		<value xml:lang="ko"><![CDATA[모바일 기기에서 QR 코드를 찍어주세요.]]></value>
+	</item>
+	<item name="pure_old_browser_update">
+		<value xml:lang="ko"><![CDATA[브라우저 업데이트]]></value>
+	</item>
+	<item name="pure_old_browser_ignore">
+		<value xml:lang="ko"><![CDATA[무시하고 보기]]></value>
+	</item>
+
+	<item name="pure_layout_settings_required">
+		<value xml:lang="ko"><![CDATA[레이아웃 설정이 완료되지 않았습니다.]]></value>
+	</item>
+	<item name="pure_layout_settings_required_description">
+		<value xml:lang="ko"><![CDATA[레이아웃 설정이 완료되지 않았습니다.]]></value>
+	</item>	
+
+	<item name="pure_fontawesome5_required">
+		<value xml:lang="ko"><![CDATA[Font Awesome 5를 불러올 수 없습니다.]]></value>
+	</item>
+	<item name="pure_fontawesome5_required_description">
+		<value xml:lang="ko"><![CDATA[Font Awesome 5 애드온을 활성화해주세요.]]></value>
+	</item>
+	<item name="pure_fontawesome5_install_description">
+		<value xml:lang="ko"><![CDATA[Font Awesome 5 애드온을 설치해주세요.]]></value>
+	</item>
+</lang>

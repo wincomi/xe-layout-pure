@@ -1,0 +1,269 @@
+/*!
+ * Pure 레이아웃
+ */
+
+@import "bootstrap-options";
+
+// General
+body {
+	font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+}
+
+%pure-box {
+	margin-bottom: $spacer;
+	@include box-shadow($box-shadow-sm);
+	
+	@include border-radius($card-border-radius);
+	
+	@include media-breakpoint-down(xs) {
+		border-radius: 0;
+	}
+	
+	// overflow: hidden;
+}
+
+// Card
+.card {
+	@extend %pure-box;
+}
+
+// Navbar
+.pure-navbar {
+	@extend %pure-box;
+
+	&.navbar-light {
+		.navbar-brand-icon {
+			color: $navbar-light-hover-color;
+			
+			@include hover-focus {
+				color: $navbar-light-color;
+			}
+	
+			@include transition($transition-color);
+		}
+	}
+
+	&.navbar-dark {
+		.navbar-brand-icon {
+			color: $navbar-dark-hover-color;
+			
+			@include hover-focus {
+				color: $navbar-dark-color;
+			}
+		}
+	}
+	@include media-breakpoint-up(sm) {
+		margin: {
+			top: $spacer * 1.5;
+			bottom: $spacer * 1.5;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		.navbar-collapse {
+			.navbar-nav {
+				flex-flow: row wrap;
+				flex-direction: row;
+
+				.dropdown-menu {
+					position: absolute;
+				}
+
+				.nav-link {
+					padding-right: $navbar-nav-link-padding-x;
+					padding-left: $navbar-nav-link-padding-x;
+				}
+			}
+		}
+	}
+}
+
+// Container
+.pure-container {
+	@include media-breakpoint-down(xs) {
+		padding: 0;
+		overflow-x: hidden;
+	}
+}
+
+// Footer
+.pure-footer {
+	padding: {
+		top: $spacer;
+		bottom: $spacer;
+	}
+	color: $navbar-light-color;
+	
+	.footer-link {
+		color: $navbar-light-color;
+		text-decoration: none;
+		
+		&:hover {
+			color: $navbar-light-hover-color;
+		}
+	}
+	
+	.list-inline-item.active > .footer-link {
+		color: $navbar-light-active-color;
+	}
+}
+
+// Sidebar
+.pure-sidebar {
+	
+}
+
+// Old Browser
+#pure-old-browser {
+	background-color: $body-bg;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: $zindex-modal;
+	overflow: hidden;
+	outline: 0;
+
+	text-align: center;
+
+	.container {
+		display: table;
+		height: 100%;
+		
+		.content {
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+}
+
+// Pure Content
+.pure-content {
+	overflow: visible;
+}
+
+// Pure DL Inline
+.pure-dl-inline {
+	margin-bottom: 0;
+	
+	dt, dd {
+		display: inline;
+	}
+	
+	dd {
+		margin-right: $spacer / 4;
+	}
+	
+	dt > .fa {
+		cursor: help;
+	}
+}
+
+// Pure Thumbnail
+.pure-thumbnail {
+	display: block;
+	overflow: hidden;
+}
+
+.pure-thumbnail > img {
+	transition: transform .25s ease-in-out;
+}
+
+.pure-thumbnail:hover > img {
+	transform: scale(1.1);
+}
+
+.pure-no-thumbnail {
+	position: relative;
+	
+	transition: background-color .25s ease-in-out;
+}
+
+.pure-no-thumbnail > span {
+	color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 4rem;
+	text-align: center;
+	
+	transition: transform .25s ease-in-out, color .25s ease-in-out;
+}
+
+.pure-no-thumbnail:hover > span {
+	transform: scale(1.1);
+	color: rgba(255, 255, 255, 0.5);
+}
+
+//
+// XE Fix
+//
+
+
+body, table, input, textarea, select, button {
+	font-family: $font-family-sans-serif;
+	font-size: $font-size-base;
+}
+
+.x * {
+	box-sizing: content-box;
+}
+
+.btnArea {
+	text-align: right;
+	padding: {
+		top: 1rem;
+		bottom: 1rem;
+	}
+	
+	.btn {
+		@include button-variant($light, $light);
+	}
+}
+
+.wfsr#pure-wfsr {
+	z-index: $zindex-modal + 1;
+	display: none;
+	position: fixed;
+	left: 0;
+	top: auto;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+	border-bottom: none;
+	text-align: center;
+	font: inherit;
+	opacity: 1;
+	filter: none;
+	box-shadow: none;
+	background: none;
+	
+	.card-body {
+		max-width: 500px;
+		margin: auto;
+
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+}
+
+.wfsr:not(#pure-wfsr) {
+	display: none !important;
+}
+
+#pageBtnArea[style*='block'] , .x_modal[style*='block'] {
+	display: block !important;
+}

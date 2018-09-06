@@ -1,0 +1,53 @@
+<div class="card" loop="$gnb->list => $key1, $val1" cond="$layout_info->sidebar_member_menu != 'Y' && $layout_info->sidebar_gnb != 'N' && $val1['selected'] && $val1['list']">
+	<div class="pure-header card-body d-flex justify-content-between">
+		<h5 class="card-title mb-0">
+			<i class="{$fa_prefix} {$val1['desc']} fa-fw" cond="strpos($val1['desc'], 'fa-') !== false"></i> {$val1['link']}
+		</h5>
+
+		<a href="{$val1['href']}" target="_blank"|cond="$val1['open_window'] == 'Y'" class="text-muted h5 mb-0 px-2">
+			<i class="{$fa_prefix} fa-angle-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	<div class="list-group list-group-flush">
+		<a href="{$val2['href']}" class="list-group-item list-group-item-action<!--@if($val2['selected'])--> active<!--@end-->" target="_blank"|cond="$val2['open_window'] == 'Y'" loop="$val1['list'] => $key2, $val2">
+			<i class="{$fa_prefix} {$val2['desc']} fa-fw" cond="strpos($val2['desc'], 'fa-') !== false"></i> {$val2['link']}
+		</a>
+	</div>
+</div>
+
+<div class="card" cond="$module_info->use_category == 'Y' && $category_list">
+	<div class="card-body">
+		<h5 class="card-title mb-0">{$module_info->browser_title}</h5>
+	</div>
+
+	<nav class="list-group list-group-flush">
+		<a href="{getUrl('', 'mid', $mid, 'category', '')}" class="list-group-item list-group-item-action<!--@if(!$category)--> active<!--@end-->" cond="false">
+			<i class="{$fa_prefix} fa-list fa-fw" aria-hidden="true"></i> {$lang->total}
+		</a>
+		<a loop="$category_list => $key, $val" class="list-group-item list-group-item-action<!--@if($category == $val->category_srl)--> active<!--@end--> d-flex justify-content-between align-items-center" href="{getUrl('', 'mid', $mid, 'category', $val->category_srl, 'document_srl', '')}" data-toggle="tooltip" data-title="{$val->description}" data-placement="bottom">
+			<i class="{$category == $val->category_srl ? 'fas' : $fa_prefix} {$val->description} fa-fw mr-2" cond="strpos($val->description, 'fa-') !== false"></i> 
+			{$val->title}
+			<span class="badge badge-light badge-pill ml-auto" cond="$val->document_count">{$val->document_count}</span>
+		</a>
+	</nav>
+</div>
+
+<div class="card" cond="$layout_info->sidebar_member_menu == 'Y'">
+	<div class="pure-header card-body">
+		<h5 class="card-title mb-0">{$lang->member} {$lang->menu}</h5>
+	</div>
+	<div class="list-group list-group-flush">
+		<a loop="$logged_info->menu_list => $key, $val" href="{getUrl('', 'act', $key, 'mid', $mid, 'vid', $vid)}" class="list-group-item list-group-item-action<!--@if($key == $pure_check_active_act)--> active<!--@end-->">
+			<i class="{$key == $pure_check_active_act ? 'fas' : $fa_prefix} fa-{$layout_info->sidebar_member_menu_icons[$key]} fa-fw" cond="$layout_info->sidebar_member_menu_icons[$key]"></i>
+			{Context::getLang($val)}
+		</a>
+		<a href="{getUrl('act', 'dispMemberLogout')}" class="list-group-item list-group-item-action">
+			<i class="{$fa_prefix} fa-sign-out<!--@if($fa_prefix != 'fal')-->-alt<!--@end-->" aria-hidden="true"></i> {$lang->cmd_logout}
+		</a>
+		<a cond="$logged_info->is_admin == 'Y'" href="{getUrl('', 'module', 'admin')}" class="list-group-item list-group-item-action" target="_blank">
+			<i class="{$fa_prefix} fa-cog" aria-hidden="true"></i> {$lang->cmd_management}
+		</a>
+	</div>
+</div>
+
+<div class="card" loop="$layout_info->sidebar_items => $val" cond="$val">{$val}</div>

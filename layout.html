@@ -1,0 +1,47 @@
+<!--// Bootstrap -->
+<load target="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" cond="__DEBUG__" />
+<load target="js/bootstrap.bundle.min.js" cond="!__DEBUG__" />
+
+<!--// Pure -->
+<load target="css/pure.css" />
+<load target="js/pure.js" />
+<load target="js/pure-admin.js" cond="$logged_info->is_admin == 'Y'" />
+<load target="lang/lang.xml" />
+
+<include target="_settings.html" />
+
+<div class="pure-container {$layout_info->container_type}">
+	<include target="_navbar.html" />
+
+	<include target="_admin_message.html" cond="$logged_info->is_admin == 'Y'" />
+
+	<div id="main-content" class="row" cond="$layout_info->sidebar == 'Y'">
+		<main class="{$layout_info->class->main}">
+			<div class="{$layout_info->class->content}">
+				{$content}
+			</div>
+		</main>
+
+		<aside id="main-sidebar" class="{$layout_info->class->sidebar}">
+			<include target="_sidebar.html" />
+		</aside>
+	</div>
+	
+	<main id="main-content" class="{$layout_info->class->main}" cond="$layout_info->sidebar != 'Y'">
+		<div class="{$layout_info->class->content}">
+			{$content}
+		</div>
+	</main>
+
+	<include target="_footer.html" cond="$layout_info->footer != 'N'" />
+</div>
+
+<include target="_old_browser.html" cond="$layout_info->old_browser != 'N'" />
+
+<div id="pure-wfsr" class="wfsr">
+	<div class="card card-body mb-0 shadow bg-secondary text-white">
+		<p class="mb-0"><i class="{$fa_prefix} fa-circle-notch fa-spin fa-fw mr-1" aria-hidden="true"></i> {$lang->msg_call_server}</p>
+	</div>
+</div>
+
+<!-- {$layout_info->layout_title} v{$layout_info->version} by {$layout_info->author[0]->name} ({$layout_info->author[0]->homepage}) -->

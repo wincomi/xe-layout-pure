@@ -1,0 +1,50 @@
+<nav id="main-navbar" class="pure-navbar navbar navbar-expand-lg navbar-{in_array($layout_info->navbar_background_color, ['white', 'warning']) ? 'light' : 'dark'} bg-{$layout_info->navbar_background_color} justify-content-between">
+	<a class="navbar-brand" href="{$layout_info->navbar_brand_url ? $layout_info->navbar_brand_url : getUrl('')}">
+		<i class="fas fa-leaf navbar-brand-icon" aria-hidden="true" cond="!$layout_info->navbar_brand"></i> {$layout_info->navbar_brand}
+	</a>
+
+	<div class="navbar-expand order-lg-2">
+		<ul class="navbar-nav">
+			<li class="nav-item" cond="$logged_info->is_admin == 'Y'">
+				<a href="{getUrl('', 'module', 'admin')}" target="_blank" class="nav-link" title="{$lang->cmd_management}">
+					<i class="{$fa_prefix} fa-cog fa-fw" aria-hidden="true"></i> 
+				</a>
+			</li>
+
+			<li class="nav-item" cond="$is_logged">
+				<a href="{getUrl('act', 'dispMemberInfo')}" class="nav-link navbar-text<!--@if($layout_info->sidebar_member_menu == 'Y')--> active<!--@end-->" title="{$lang->member_info}">
+					<i class="{$fa_prefix} fa-user fa-fw" aria-hidden="true"></i>
+				</a>
+			</li>
+			
+			<li class="nav-item" cond="!$is_logged">
+				<a href="{getUrl('act', 'dispMemberLoginForm')}" class="nav-link navbar-text<!--@if($act == 'dispMemberLoginForm')--> active<!--@end-->" title="{$lang->cmd_login}">
+					<i class="{$fa_prefix} fa-sign-in<!--@if($fa_prefix != 'fal')-->-alt<!--@end--> fa-fw" aria-hidden="true"></i> 
+				</a>
+			</li>
+			
+			<li class="nav-item" cond="$is_logged">
+				<a href="{getUrl('act', 'dispMemberLogout')}" class="nav-link navbar-text" title="{$lang->cmd_logout}">
+					<i class="{$fa_prefix} fa-sign-out<!--@if($fa_prefix != 'fal')-->-alt<!--@end--> fa-fw" aria-hidden="true"></i>
+				</a>
+			</li>
+
+			<li class="nav-item d-lg-none">
+				<a href="#" role="button" class="nav-link navbar-text collapsed" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="fas fa-bars fa-fw"></i> <span class="sr-only">{$lang->menu}</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="collapse navbar-collapse order-lg-1" id="main-nav">
+		<ul class="navbar-nav justify-content-between w-100">
+			<li loop="$gnb->list => $key1, $val1" class="flex-fill text-lg-center nav-item<!--@if($val1['selected'])--> active<!--@end-->">
+				<a href="{$val1['href']}" class="nav-link" target="_blank"|cond="$val1['open_window']=='Y'">
+					<i class="{$fa_prefix} {$val1['desc']} fa-fw" cond="strpos($val1['desc'], 'fa-') !== false"></i>
+					{$val1['link']}
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>

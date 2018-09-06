@@ -1,0 +1,27 @@
+<div class="alert alert-danger" role="alert" cond="!$layout_info->sidebar">
+	<h5 class="alert-heading">{$lang->pure_layout_settings_required}</h5>
+	<p class="mb-0">
+		{$lang->pure_layout_settings_required_description}
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispLayoutAdminModify', 'layout', $layout_info->layout, 'layout_srl', $layout_info->layout_srl)}" class="alert-link" target="_blank">
+			{$lang->cmd_layout_setup}
+		</a>
+	</p>
+</div>
+
+<div class="alert alert-warning" cond="!$fa_prefix">
+	{@
+		$oAddonAdminModel = getAdminModel('addon');
+		$fontawesome5_addon_info = $oAddonAdminModel->getAddonInfoXml('fontawesome5', $site_module_info->site_srl);
+	}
+	<h5 class="alert-heading">{$lang->pure_fontawesome5_required}</h5>
+	<p class="mb-0">
+		<!--@if($fontawesome5_addon_info)-->
+		{$lang->pure_fontawesome5_required_description}
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispAddonAdminIndex')}" class="alert-link" target="_blank">
+			{$lang->cmd_setup}
+		</a>
+		<!--@else-->
+		{$lang->pure_fontawesome5_install_description}
+		<!--@end-->
+	</p>
+</div>

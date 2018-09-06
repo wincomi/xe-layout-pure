@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+	<title xml:lang="ko">Pure</title>
+	<description xml:lang="ko">Bootstrap 4를 기반으로 제작된 레이아웃입니다.</description>
+	<version>1.0.0-beta.1</version>
+	<date>2018-08-08</date>
+	<author email_address="admin@wincomi.com" link="https://www.wincomi.com/">
+		<name xml:lang="ko">코미</name>
+	</author>
+
+	<extra_vars>
+		<group>
+			<title xml:lang="ko">기본</title>
+			<var name="container_type" type="select">
+				<title xml:lang="ko">컨텐츠 폭</title>
+				<description xml:lang="ko">'고정 폭'은 기기에 따라 고정된 폭를 유지합니다. '브라우저 폭'은 항상 브라우저 폭의 100%를 유지합니다.</description>
+				<options value="container">
+					<title xml:lang="ko">고정 폭</title>
+				</options>
+				<options value="container-fluid">
+					<title xml:lang="ko">브라우저 폭</title>
+				</options>
+			</var>
+		</group>
+		<group>
+			<title xml:lang="ko">상단 메뉴</title>
+			<var name="navbar_background_color" type="select">
+				<title xml:lang="ko">배경색</title>
+				<options value="white">
+					<title xml:lang="ko">white</title>
+				</options>
+				<options value="dark">
+					<title xml:lang="ko">dark</title>
+				</options>
+				<options value="primary">
+					<title xml:lang="ko">primary</title>
+				</options>
+				<options value="secondary">
+					<title xml:lang="ko">secondary</title>
+				</options>
+				<options value="success">
+					<title xml:lang="ko">success</title>
+				</options>
+				<options value="danger">
+					<title xml:lang="ko">danger</title>
+				</options>
+				<options value="warning">
+					<title xml:lang="ko">warning</title>
+				</options>
+				<options value="info">
+					<title xml:lang="ko">info</title>
+				</options>
+			</var>
+
+			<var name="navbar_brand" type="text">
+				<title xml:lang="ko">홈페이지 이름</title>
+				<description xml:lang="ko">메뉴에 표시될 홈페이지 이름을 입력하세요.</description>
+			</var>
+			<var name="navbar_brand_url" type="text">
+				<title xml:lang="ko">홈페이지 주소</title>
+				<description xml:lang="ko">홈페이지 이름을 누를 경우 이동 할 URL을 입력하세요.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">사이드바</title>
+			<var name="sidebar" type="select">
+				<title xml:lang="ko">사이드바</title>
+				<options value="Y">
+					<title xml:lang="ko">사용</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용 안 함</title>
+				</options>
+			</var>
+			<var name="sidebar_placement" type="select">
+				<title xml:lang="ko">위치</title>
+				<description xml:lang="ko">PC에서 사이드바를 표시할 위치를 설정합니다. 사용을 할 경우 모바일에서는 항상 아래에 표시됩니다.</description>
+				<options value="left">
+					<title xml:lang="ko">왼쪽</title>
+				</options>
+				<options value="right">
+					<title xml:lang="ko">오른쪽</title>
+				</options>
+			</var>
+			<var name="sidebar_gnb" type="select">
+				<title xml:lang="ko">2차 메뉴</title>
+				<description xml:lang="ko">2차 메뉴가 있을 경우 사이드바에 표시합니다.</description>
+				<options value="Y">
+					<title xml:lang="ko">사용</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용 안 함</title>
+				</options>
+			</var>
+			<var name="sidebar_member_menu" type="select">
+				<title xml:lang="ko">회원 메뉴</title>
+				<description xml:lang="ko">회원 메뉴를 사이드바에 표시합니다. 회원 모듈, 커뮤니케이션 모듈 등에서 사용하는 것을 권장합니다.</description>
+				<options value="A">
+					<title xml:lang="ko">자동 (회원 메뉴에 있을 경우 표시함)</title>
+				</options>
+				<options value="Y">
+					<title xml:lang="ko">사용</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용 안 함</title>
+				</options>
+			</var>
+			<var name="sidebar_item1" type="textarea">
+				<title xml:lang="ko">첫 번째 사용자 지정 위젯</title>
+				<description xml:lang="ko">사이드바에 표시될 위젯 혹은 HTML 코드를 입력하세요.</description>
+			</var>
+			<var name="sidebar_item2" type="textarea">
+				<title xml:lang="ko">두 번째 사용자 지정 위젯</title>
+			</var>
+			<var name="sidebar_item3" type="textarea">
+				<title xml:lang="ko">세 번째 사용자 지정 위젯</title>
+			</var>
+			<var name="sidebar_item4" type="textarea">
+				<title xml:lang="ko">네 번째 사용자 지정 위젯</title>
+			</var>
+			<var name="sidebar_item5" type="textarea">
+				<title xml:lang="ko">다섯 번째 사용자 지정 위젯</title>
+				<description xml:lang="ko">위젯을 추가하기 위해서 $layout_info->sidebar_items 배열에 항목을 추가하세요.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">푸터</title>
+			<var name="footer" type="select">
+				<title xml:lang="ko">푸터</title>
+				<options value="Y">
+					<title xml:lang="ko">사용</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용 안 함</title>
+				</options>
+			</var>
+			<var name="footer_text" type="textarea">
+				<title xml:lang="ko">푸터 추가 내용</title>
+				<description xml:lang="ko">푸터에 추가할 내용을 입력하세요. (HTML 사용 가능)</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">구 브라우저 안내</title>
+			<var name="old_browser" type="select">
+				<title xml:lang="ko">구 브라우저 안내</title>
+				<description xml:lang="ko">IE 9 이하의 버전에서 브라우저 업데이트 혹은 모바일 기기로 보도록 권장하는 안내창을 표시합니다. (* 사용을 권장합니다.)</description>
+				<options value="Y">
+					<title xml:lang="ko">사용</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용 안 함</title>
+				</options>
+			</var>
+			<var name="old_browser_qr_code" type="image">
+				<title xml:lang="ko">QR Code</title>
+				<description xml:lang="ko">사용자가 쉽게 모바일 기기에서 접속할 수 있도록 QR 코드를 출력합니다.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">고급</title>
+			<var name="sidebar_disabled_mid" type="text">
+				<title xml:lang="ko">사이드바 숨김</title>
+				<description xml:lang="ko">특정 페이지에서 사이드바를 숨깁니다. 모듈 ID를 쉼표로 구분하여 입력합니다. (예: index)</description>
+			</var>
+			<var name="content_disable_background" type="text">
+				<title xml:lang="ko">내용 배경</title>
+				<description xml:lang="ko">특정 페이지에서 컨텐츠 배경을 제거합니다. 모듈 ID를 쉼표로 구분하여 입력합니다. 외부 페이지로 화면을 꾸밀 경우 사용하세요. (예: index, main, home)</description>
+			</var>
+			<var name="content_padding" type="text">
+				<title xml:lang="ko">내용 여백</title>
+				<description xml:lang="ko">특정 페이지에서 컨텐츠의 여백을 추가합니다. 모듈 ID를 쉼표로 구분하여 입력합니다. Pure 레이아웃용 모듈 스킨을 적용하지 않았을 때 사용하세요. (예: default, sketchbook)</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">개발자</title>
+			<var name="remove_core_css" type="select">
+				<title xml:lang="ko">코어 기본 CSS</title>
+				<description xml:lang="ko">코어 기본 CSS를 제거하지 않으면 레이아웃 디자인에 문제가 발생할 수 있습니다. 자세한 정보는 매뉴얼을 참고하세요.</description>
+				<options value="automatic">
+					<title xml:lang="ko">자동</title>
+				</options>
+				<options value="rhymix_define">
+					<title xml:lang="ko">상수 선언 (Rhymix v1.9.8 이상)</title>
+				</options>
+				<options value="script">
+					<title xml:lang="ko">Javascript 방식 (로드 후 제거) (XE, Rhymix)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">레이아웃에서 제거하지 않음</title>
+				</options>
+			</var>
+		</group>
+	</extra_vars>
+
+	<menus>
+		<menu name="gnb" maxdepth="2" default="true">
+			<title xml:lang="ko">메인 메뉴</title>
+		</menu>
+		<menu name="footer_menu">
+			<title xml:lang="ko">푸터 메뉴</title>
+		</menu>
+	</menus>
+</layout>

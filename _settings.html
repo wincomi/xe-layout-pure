@@ -1,0 +1,127 @@
+{@		
+// Add viewport
+Context::addMetaTag("viewport", "width=device-width, initial-scale=1, shrink-to-fit=no");
+
+// Layout Info Default Value
+if (!$layout_info->container_type) $layout_info->container_type = 'container';
+
+if (!$layout_info->navbar_background_color) $layout_info->navbar_background_color = 'white';
+
+if ($layout_info->content_disable_background)
+	$layout_info->content_disable_background = array_map('trim', explode(',', $layout_info->content_disable_background));
+else
+	$layout_info->content_disable_background = [];
+
+if ($layout_info->content_padding)
+	$layout_info->content_padding = array_map('trim', explode(',', $layout_info->content_padding));
+else
+	$layout_info->content_padding = [];
+
+if ($layout_info->sidebar_disabled_mid)
+	$layout_info->sidebar_disabled_mid = array_map('trim', explode(',', $layout_info->sidebar_disabled_mid));
+else
+	$layout_info->sidebar_disabled_mid = [];
+
+if (in_array($mid, $layout_info->sidebar_disabled_mid)):
+	$layout_info->sidebar = 'N';
+endif;
+
+if ($act == 'dispMemberLoginForm'):
+	$layout_info->sidebar = 'N';
+	$layout_info->content_padding = [];
+	$layout_info->content_disable_background = [$mid];
+endif;
+}
+
+<!--// Sidebar -->
+{@
+if (!$layout_info->sidebar_member_menu) $layout_info->sidebar_member_menu = 'A';
+
+$layout_info->sidebar_items = [
+	$layout_info->sidebar_item1,
+	$layout_info->sidebar_item2,
+	$layout_info->sidebar_item3,
+	$layout_info->sidebar_item4,
+	$layout_info->sidebar_item5,
+];
+}
+<!--@if($layout_info->sidebar_member_menu == 'A')-->
+<!--@foreach($logged_info->menu_list as $key => $val)-->
+{@
+if ($key == $act):
+	$layout_info->sidebar_member_menu = 'Y';
+	break;
+endif;
+
+if ($act == 'dispMemberModifyInfo' || $act == 'dispMemberModifyPassword' || $act == 'dispMemberLeave' || $act == 'dispMemberModifyEmailAddress'):
+	$layout_info->sidebar_member_menu = 'Y';
+endif;
+}
+<!--@end-->
+{@
+if ($layout_info->sidebar_member_menu == 'Y'):
+	$layout_info->content_padding = [];
+	$layout_info->content_disable_background = [];
+endif;
+
+$layout_info->sidebar_member_menu_icons = [
+	'dispMemberInfo' => 'user',
+	'dispMemberScrappedDocument' => 'bookmark',
+	'dispMemberSavedDocument' => 'save',
+	'dispMemberOwnDocument' => 'pencil-alt',
+	'dispMemberOwnComment' => 'comments',
+	'dispMemberActiveLogins' => 'sign-in-alt',
+	'dispMemberModifyNicknameLog' => 'history',
+	'dispCommunicationMessages' => 'inbox',
+	'dispCommunicationFriend' => 'user-friends',
+	
+	'dispNcenterliteNotifyList' => 'bullhorn',
+	'dispNcenterliteUserConfig' => 'cog',
+];
+
+$pure_check_active_act = $act;
+if (in_array($act, ['dispMemberModifyInfo', 'dispMemberModifyPassword', 'dispMemberLeave', 'dispMemberModifyEmailAddress'])) $pure_check_active_act = 'dispMemberInfo';
+}
+<!--@end-->
+
+<!--// CSS Class -->
+{@
+$layout_info->class = new stdClass();
+
+$layout_info->class->main = 'pure-main clearfix';
+if ($layout_info->sidebar == 'Y'):
+	$layout_info->class->main .= ' col-lg-9';
+
+	if ($layout_info->sidebar_placement == 'left')
+		$layout_info->class->main .= ' order-lg-2';
+endif;
+
+$layout_info->class->sidebar = 'pure-sidebar col-lg-3';
+if ($layout_info->sidebar == 'Y' && $layout_info->sidebar_placement == 'left')
+	$layout_info->class->main .= ' order-lg-1';
+
+$layout_info->class->content = 'pure-content';
+if (!in_array($mid, $layout_info->content_disable_background))
+	$layout_info->class->content .= ' card';
+if (in_array($mid, $layout_info->content_padding))
+	$layout_info->class->content .= 'p-3';
+}
+
+<!--// Remove core css -->
+{@	
+if (defined('RX_VERSION')):
+	// Rhymix v1.9.8 (https://github.com/rhymix/rhymix/pull/1053)
+	if ((version_compare(RX_VERSION, '1.9.8', '>=') && $layout_info->remove_core_css == 'automatic') || $layout_info->remove_core_css == 'rhymix_define'):
+		define('DISABLE_XE_BTN_STYLES', 1);
+		define('DISABLE_XE_MSG_STYLES', 1);
+	endif;
+endif;
+}
+
+<script cond="(!defined('RX_VERSION') && $layout_info->remove_core_css == 'automatic') || $layout_info->remove_core_css == 'script'">
+<!--@if(defined('RX_VERSION'))-->
+jQuery("link[rel=stylesheet][href*='rhymix.less.<block cond="!__DEBUG__">min.</block>css']").remove();
+<!--@else-->
+jQuery("link[rel=stylesheet][href*='common/css/xe.<block cond="!__DEBUG__">min.</block>css']").remove();
+<!--@end-->
+</script>

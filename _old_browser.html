@@ -1,0 +1,20 @@
+<!--[if lte IE 9]>
+<div id="pure-old-browser">
+	<div class="container">
+		<div class="content">
+			<h1>{$lang->pure_old_browser_title}</h1>
+			<p class="lead text-muted">
+				{$lang->pure_old_browser_subtitle}
+			</p>
+			<p class="text-muted" cond="$layout_info->old_browser_qr_code">
+				<img src="{$layout_info->old_browser_qr_code}" alt="QR Code" /><br />
+				{$lang->pure_old_browser_qrcode_desc}
+			</p>
+			<p>
+				<a href="http://outdatedbrowser.com/ko" target="_blank" class="mr-3">{$lang->pure_old_browser_update}</a>
+				<a href="#" onclick="document.getElementById('pure-old-browser').style.display = 'none';return false;">{$lang->pure_old_browser_ignore}</a>
+			</p>
+		</div>
+	</div>
+</div>
+<![endif]-->
