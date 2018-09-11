@@ -80,6 +80,16 @@ body {
 			}
 		}
 	}
+
+	.dropdown-menu {
+		width: 100%;
+		box-shadow: $box-shadow-sm;
+		border-width: 0;
+	}
+
+	.dropdown-item {
+		padding: 0.5rem 1rem;
+	}
 }
 
 // Container

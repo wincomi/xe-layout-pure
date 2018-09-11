@@ -87,3 +87,7 @@ $transition-background-color: background-color .15s ease-in-out;
 a {
 	@include transition($transition-color);
 }
+
+.dropdown-item {
+	@include transition($transition-background-color);
+}
