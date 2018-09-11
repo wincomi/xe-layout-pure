@@ -103,11 +103,17 @@ body {
 // Footer
 .pure-footer {
 	padding: {
-		top: $spacer;
-		bottom: $spacer;
+		top: $card-spacer-x;
+		bottom: $card-spacer-x;
 	}
+	margin-bottom: 0;
+
 	color: $navbar-light-color;
-	
+
+	:last-child {
+		margin-bottom: 0;
+	}
+
 	.footer-link {
 		color: $navbar-light-color;
 		text-decoration: none;
@@ -116,9 +122,13 @@ body {
 			color: $navbar-light-hover-color;
 		}
 	}
-	
+
 	.list-inline-item.active > .footer-link {
 		color: $navbar-light-active-color;
+	}
+
+	&.card {
+		box-shadow: 0 -.125rem .25rem rgba($black, .075);
 	}
 }
 

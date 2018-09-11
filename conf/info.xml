@@ -136,6 +136,16 @@
 					<title xml:lang="ko">사용 안 함</title>
 				</options>
 			</var>
+			<var name="footer_card" type="select">
+				<title xml:lang="ko">푸터 배경</title>
+				<description xml:lang="ko">푸터에 컨텐츠 배경과 같은 배경을 추가합니다.</description>
+				<options value="N">
+					<title xml:lang="ko">사용 안 함</title>
+				</options>
+				<options value="Y">
+					<title xml:lang="ko">사용</title>
+				</options>
+			</var>
 			<var name="footer_text" type="textarea">
 				<title xml:lang="ko">푸터 추가 내용</title>
 				<description xml:lang="ko">푸터에 추가할 내용을 입력하세요. (HTML 사용 가능)</description>

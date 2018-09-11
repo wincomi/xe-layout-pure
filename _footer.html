@@ -1,28 +1,30 @@
-<footer id="main-footer" class="pure-footer text-center">
-	<ul class="list-inline" cond="$footer_menu->list">
-		<li loop="$footer_menu->list => $key1, $val1" class="list-inline-item mr-3<!--@if($val1['selected'])--> active<!--@end-->">
-			<a href="{$val1['href']}" class="footer-link" target="_blank"|cond="$val1['open_window']=='Y'">
-				<i class="{$fa_prefix} {$val1['desc']} fa-fw" cond="strpos($val1['desc'], 'fa-') !== false"></i>
-				{$val1['link']}
-			</a>
-		</li>
-	</ul>
-	<ul class="list-inline" cond="$logged_info->is_admin == 'Y'">
-		<li class="list-inline-item">
-			<a href="{getUrl('', 'module', 'admin', 'act', 'dispLayoutAdminModify', 'layout', $layout_info->layout, 'layout_srl', $layout_info->layout_srl)}" class="footer-link" target="_blank">
-				<i class="{$fa_prefix} fa-pen-nib" aria-hidden="true"></i> {$lang->cmd_layout_setup}
-			</a>
-		</li>
-		<li class="list-inline-item">
-			<a href="{getUrl('', 'module', 'admin')}" class="footer-link" target="_blank">
-				<i class="{$fa_prefix} fa-cog" aria-hidden="true"></i> {$lang->cmd_management}
-			</a>
-		</li>
-	</ul>
-
-	<p>
-		<i class="{$fa_prefix} fa-palette" aria-hidden="true"></i> Designed by <a href="https://www.wincomi.com" class="footer-link" target="_blank" rel="nofollow">COMI <small>(a.k.a. Wincomi)</small></a>
-	</p>
-
-	<block cond="$layout_info->footer_text">{$layout_info->footer_text}</block>
+<footer id="main-footer" class="pure-footer text-center<!--@if($layout_info->footer_card == 'Y')--> card card-body<!--@end-->">
+	<div class="{$layout_info->container_type}">
+		<ul class="list-inline" cond="$footer_menu->list">
+			<li loop="$footer_menu->list => $key1, $val1" class="list-inline-item mr-3<!--@if($val1['selected'])--> active<!--@end-->">
+				<a href="{$val1['href']}" class="footer-link" target="_blank"|cond="$val1['open_window']=='Y'">
+					<i class="{$fa_prefix} {$val1['desc']} fa-fw" cond="strpos($val1['desc'], 'fa-') !== false"></i>
+					{$val1['link']}
+				</a>
+			</li>
+		</ul>
+		<ul class="list-inline" cond="$logged_info->is_admin == 'Y'">
+			<li class="list-inline-item">
+				<a href="{getUrl('', 'module', 'admin', 'act', 'dispLayoutAdminModify', 'layout', $layout_info->layout, 'layout_srl', $layout_info->layout_srl)}" class="footer-link" target="_blank">
+					<i class="{$fa_prefix} fa-pen-nib" aria-hidden="true"></i> {$lang->cmd_layout_setup}
+				</a>
+			</li>
+			<li class="list-inline-item">
+				<a href="{getUrl('', 'module', 'admin')}" class="footer-link" target="_blank">
+					<i class="{$fa_prefix} fa-cog" aria-hidden="true"></i> {$lang->cmd_management}
+				</a>
+			</li>
+		</ul>
+	
+		<p>
+			<i class="{$fa_prefix} fa-palette" aria-hidden="true"></i> Designed by <a href="https://www.wincomi.com" class="footer-link" target="_blank" rel="nofollow">COMI <small>(a.k.a. Wincomi)</small></a>
+		</p>
+	
+		<block cond="$layout_info->footer_text">{$layout_info->footer_text}</block>
+	</div>
 </footer>
